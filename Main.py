@@ -45,6 +45,7 @@ def display_emp (list_emp):
     for emp in list_emp:
         print (f"{emp['id']:<25} | {emp['name']:<25} | {emp['salary_per_day']:<15} | {emp['benefit']:<18} | {emp['total']:<18} | {emp['type']:<20}")
 
+
 def add_emp ():
     while True:
         id = input ("Nhập vào mã nhân viên: ").strip().upper()
@@ -207,10 +208,10 @@ def find_emp():
         match choice:
             case "1":
                 id = input ("Nhập vào mã nhân viên bạn cần tìm: ").strip().upper()
-                found_emp = None
+                found_emp = []
                 for emp in list_emp:
                     if emp['id'] == id:
-                        found_emp = emp
+                        found_emp.append(emp)
                         break
                 if not found_emp:
                     print (f"Không tìm được nhân viên theo mã {id} trong danh sách")
@@ -221,7 +222,7 @@ def find_emp():
                 name = input ("Nhập tên nhân viên cần tìm: ").strip().lower()
                 found_emp = []
                 for emp in list_emp:
-                    if name == emp['name'].lower():
+                    if name in emp['name'].lower():
                         found_emp.append(emp)
                 if not found_emp:
                     print (f"Không tìm được tên nhân viên trong danh sách")
